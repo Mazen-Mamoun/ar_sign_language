@@ -40,7 +40,7 @@ class _SplashViewState extends State<SplashView>
 
   void navigateToSignIn() {
     Future.delayed(const Duration(seconds: 3), () {
-      GoRouter.of(context).push(AppRouter.kLearningContentScreen);
+      context.go(AppRouter.kLearningContentScreen);
     });
   }
 
