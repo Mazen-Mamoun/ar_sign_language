@@ -33,33 +33,14 @@ class _SplashViewState extends State<SplashView>
     return Scaffold(
       backgroundColor: const Color(0xff648DDC),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image(height: 110, image: AssetImage('assets/images/ok.png')),
-                Text(
-                  'تواصُل',
-                  style: TextStyle(
-                    fontSize: 50,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
-            ),
-            TextSlideAnimation(slidingAnimation: slidingAnimation),
-          ],
+        child: SplashContent(slidingAnimation: slidingAnimation),
         ),
-      ),
     );
   }
 
   void navigateToSignIn() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, 'SignInView');
+      GoRouter.of(context).push(AppRouter.kLearningContentScreen);
     });
   }
 
