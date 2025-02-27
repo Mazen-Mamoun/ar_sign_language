@@ -14,7 +14,7 @@ class ContentCategoryItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 30),
       child: GestureDetector(
         onTap: () {
-          context.go(AppRouter.kTestScreen);
+          GoRouter.of(context).push(AppRouter.kTestScreen);
         },
         child: Container(
           height: 85,
