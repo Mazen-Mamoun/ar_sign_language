@@ -8,8 +8,6 @@ class ContentAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0,
       leading: IconButton(
         icon:
             const Icon(Icons.arrow_back_ios_new_outlined, color: Colors.black),
@@ -22,7 +20,6 @@ class ContentAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Text(
           text,
           style: const TextStyle(
-            fontFamily: "Poppins",
             fontSize: 28,
             fontWeight: FontWeight.w600,
             color: Colors.black,
