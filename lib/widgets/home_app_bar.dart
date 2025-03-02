@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sign_app/Widgets/profile_icon.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key, required this.userName});
@@ -7,21 +8,16 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Text(
-            '"$userName" مرحباً',
-            style: const TextStyle(fontWeight: FontWeight.w600),
-          ),
-          const SizedBox(width: 12),
-          const Image(
-            image: AssetImage('assets/images/profile_icon.png'),
-            height: 48,
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          '"$userName" مرحباً',
+          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+        ),
+        const SizedBox(width: 12),
+        const ProfileIcon(),
+      ],
     );
   }
 }
