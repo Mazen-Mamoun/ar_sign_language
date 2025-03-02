@@ -41,6 +41,7 @@ class _SplashViewState extends State<SplashView>
     );
   }
 
+
   void navigateToSignIn() {
     Future.delayed(const Duration(seconds: 3), () {
       context.go(AppRouter.kHomeView);
