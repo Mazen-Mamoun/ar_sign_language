@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sign_app/Widgets/text_sliding_animation.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sign_app/Widgets/splash_content.dart';
+import 'package:sign_app/constants.dart';
+import 'package:sign_app/helper/app_router.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -31,16 +34,17 @@ class _SplashViewState extends State<SplashView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff648DDC),
+      backgroundColor: primaryColor,
       body: Center(
         child: SplashContent(slidingAnimation: slidingAnimation),
-        ),
+      ),
     );
   }
 
+
   void navigateToSignIn() {
     Future.delayed(const Duration(seconds: 3), () {
-      context.go(AppRouter.kLearningContentScreen);
+      context.go(AppRouter.kHomeView);
     });
   }
 
