@@ -5,7 +5,7 @@ import '../widgets/sign_content.dart';
 
 class LettersScreen extends StatelessWidget {
   LettersScreen({super.key});
-  final List<Map<String, String>> alphabetItems = [
+  final List<Map<String, String>> letterItems = [
     {'image': 'assets/images/logo.png', 'text': 'أ'},
     {'image': 'assets/images/logo.png', 'text': 'ب'},
     {'image': 'assets/images/logo.png', 'text': 'ت'},
@@ -24,7 +24,7 @@ class LettersScreen extends StatelessWidget {
             // ),
             Expanded(
                 child: SignContent(
-              items: alphabetItems,
+              items: letterItems,
             )),
           ],
         ),
