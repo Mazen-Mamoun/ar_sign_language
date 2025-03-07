@@ -1,25 +1,22 @@
 import 'package:go_router/go_router.dart';
-import 'package:sign_app/Views/home_view.dart';
-import 'package:sign_app/Views/learning_content_screen.dart';
-import 'package:sign_app/Views/splash_view.dart';
-import 'package:sign_app/Views/test_screen.dart';
+import 'package:tawasel/views/learning_content_screen.dart';
+import 'package:tawasel/views/letters_content_screen.dart';
+import 'package:tawasel/views/numbers_content_screen.dart';
+import 'package:tawasel/views/splash_view.dart';
+import 'package:tawasel/views/test_screen.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';
+  static const kSplashView = '/splashView';
   static const kLearningContentScreen = '/learningContentScreen';
-  static const kAlphaScreen = '/alphaScreen';
-  static const kNumberScreen = '/alphaScreen';
+  static const kLettersScreen = '/lettersScreen';
+  static const kNumberScreen = '/numbersScreen';
   static const kTestScreen = '/testScreen';
-
   static final router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashView(),
-      ),
-      GoRoute(
-        path: kHomeView,
-        builder: (context, state) => const HomeView(),
       ),
       GoRoute(
         path: kLearningContentScreen,
@@ -29,10 +26,14 @@ abstract class AppRouter {
         path: kTestScreen,
         builder: (context, state) => const TestScreen(),
       ),
-      // GoRoute(
-      //   path: kAlphaScreen,
-      //   builder: (context, state) => const NumberView(),
-      // ),
+      GoRoute(
+        path: kLettersScreen,
+        builder: (context, state) => LettersScreen(),
+      ),
+      GoRoute(
+        path: kNumberScreen,
+        builder: (context, state) => NumbersScreen(),
+      ),
     ],
   );
 }
