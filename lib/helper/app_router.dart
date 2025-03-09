@@ -2,11 +2,10 @@ import 'package:go_router/go_router.dart';
 import 'package:tawasel/views/home_view.dart';
 import 'package:tawasel/views/learning_content_screen.dart';
 import 'package:tawasel/views/letters_content_screen.dart';
-import 'package:tawasel/views/login.dart';
+import 'package:tawasel/views/login_view.dart';
 import 'package:tawasel/views/numbers_content_screen.dart';
 import 'package:tawasel/views/splash_view.dart';
 import 'package:tawasel/views/test_screen.dart';
-import 'package:tawasel/views/words_content_screen.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';
@@ -17,6 +16,7 @@ abstract class AppRouter {
   static const kNumberScreen = '/numbersScreen';
   static const kWordsScreen = '/wordsScreen';
   static const kTestScreen = '/testScreen';
+
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -29,12 +29,12 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kloginView,
-        builder: (context, state) => login(),
+        builder: (context, state) =>const LogInView(),
       ),
-      GoRoute(
-        path: kWordsScreen,
-        builder: (context, state) => WordsScreen(),
-      ),
+      // GoRoute(
+      //   path: kWordsScreen,
+      //   builder: (context, state) => kWordsScreen(),
+      // ),
       GoRoute(
         path: kHomeView,
         builder: (context, state) => const HomeView(),
