@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tawasel/constants.dart';
+import 'package:tawasel/helper/app_router.dart';
+import 'package:tawasel/helper/app_utils.dart';
 import 'package:tawasel/widgets/custom_text_form_field.dart';
 import 'package:tawasel/widgets/sign_up_navigation_text.dart';
 
-class SignInBody extends StatefulWidget {
-  const SignInBody({super.key});
+class LogInBody extends StatefulWidget {
+  const LogInBody({super.key});
 
   @override
-  State<SignInBody> createState() => _SignInBodyState();
+  State<LogInBody> createState() => _LogInBodyState();
 }
 
-class _SignInBodyState extends State<SignInBody> {
+class _LogInBodyState extends State<LogInBody> {
   final GlobalKey<FormState> form = GlobalKey();
 
   @override
@@ -81,8 +84,9 @@ class _SignInBodyState extends State<SignInBody> {
                 ),
                 onPressed: () {
                   if (form.currentState!.validate()) {
-                    print("done");
+                    snackBar(context, 'تم تسجيل الدخول بنجاح');
                   }
+                  GoRouter.of(context).push(AppRouter.kHomeView);
                 },
                 child: const Text(
                   "تسجيل الدخول",

@@ -8,3 +8,9 @@ OutlineInputBorder customOutlineInputBorder() {
     borderRadius: BorderRadius.circular(25),
   );
 }
+
+void snackBar(BuildContext context, String content) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(content: Text(content)),
+  );
+}

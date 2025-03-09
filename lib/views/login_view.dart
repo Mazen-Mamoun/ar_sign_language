@@ -11,7 +11,7 @@ class LogInView extends StatelessWidget {
       child: Scaffold(
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 30),
-          child: SignInBody(),
+          child: LogInBody(),
         ),
       ),
     );
