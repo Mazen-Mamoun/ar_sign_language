@@ -11,6 +11,9 @@ class loginin_navigator extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+         Text("لديك حساب بالفعل؟",style: TextStyle(color: Color(0xff6E6E7C),fontSize: 16,
+          fontWeight: FontWeight.w600,),),
+        
         TextButton(onPressed: (){
           Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
           },
@@ -20,8 +23,7 @@ class loginin_navigator extends StatelessWidget {
                                     fontWeight: FontWeight.w600),
             )
         ),
-        Text("لديك حساب بالفعل؟",style: TextStyle(color: Color(0xff6E6E7C),fontSize: 16,
-          fontWeight: FontWeight.w600,),),
+       
       ],
     );
   }
