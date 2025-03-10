@@ -19,7 +19,7 @@ class SignUpNavigationText extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>signUp()));
+             Navigator.push(context, MaterialPageRoute(builder: (context)=>sign_up_view()));
           },
           child: Text(
             "انشاء حساب",
