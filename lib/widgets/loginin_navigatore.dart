@@ -15,7 +15,7 @@ class loginin_navigator extends StatelessWidget {
           fontWeight: FontWeight.w600,),),
         
         TextButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>login_view()));
           },
             child: Text("تسجيل الدخول",
                    style: TextStyle(color: Color(0xff648DDC),
