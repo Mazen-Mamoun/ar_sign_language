@@ -6,10 +6,10 @@ import '../widgets/sign_content.dart';
 class LettersScreen extends StatelessWidget {
   LettersScreen({super.key});
   final List<Map<String, String>> letterItems = [
-    {'image': 'assets/images/logo.png', 'text': 'أ'},
-    {'image': 'assets/images/logo.png', 'text': 'ب'},
-    {'image': 'assets/images/logo.png', 'text': 'ت'},
-    {'image': 'assets/images/logo.png', 'text': 'ث'},
+    {'mediaPath': 'assets/images/logo.png', 'text': 'أ'},
+    {'mediaPath': 'assets/images/logo.png', 'text': 'ب'},
+    {'mediaPath': 'assets/images/logo.png', 'text': 'ت'},
+    {'mediaPath': 'assets/images/logo.png', 'text': 'ث'},
   ];
   @override
   Widget build(BuildContext context) {
