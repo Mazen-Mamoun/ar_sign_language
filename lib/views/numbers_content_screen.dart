@@ -17,21 +17,11 @@ class NumbersScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       appBar: const ContentAppBar(text: "الأرقام"),
       body: Padding(
-        padding: const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 8),
-        child: Column(
-          children: [
-            // SizedBox(
-            //   height: 10,
-            // ),
-            Expanded(
-                child: SignContent(
-              items: numberItems,
-            )),
-          ],
-        ),
+        padding: const EdgeInsets.only(top: 8, right: 16, left: 16, bottom: 8),
+        child: SignContent(itemsCount: 2, items: numberItems),
       ),
     );
   }
