@@ -6,14 +6,14 @@ import '../widgets/sign_content.dart';
 class NumbersScreen extends StatelessWidget {
   NumbersScreen({super.key});
   final List<Map<String, String>> numberItems = [
-    {'image': 'assets/images/logo.png', 'text': "1"},
-    {'image': 'assets/images/logo.png', 'text': "2"},
-    {'image': 'assets/images/logo.png', 'text': "3"},
-    {'image': 'assets/images/logo.png', 'text': "4"},
-    {'image': 'assets/images/logo.png', 'text': "4"},
-    {'image': 'assets/images/logo.png', 'text': "4"},
-    {'image': 'assets/images/logo.png', 'text': "4"},
-    {'image': 'assets/images/logo.png', 'text': "4"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "1"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "2"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "3"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "4"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "4"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "4"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "4"},
+    {'mediaPath': 'assets/images/logo.png', 'text': "4"},
   ];
   @override
   Widget build(BuildContext context) {
