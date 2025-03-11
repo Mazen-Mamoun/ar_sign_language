@@ -31,10 +31,10 @@ abstract class AppRouter {
         path: kloginView,
         builder: (context, state) =>const LogInView(),
       ),
-      // GoRoute(
-      //   path: kWordsScreen,
-      //   builder: (context, state) => kWordsScreen(),
-      // ),
+     GoRoute(
+        path: kWordsScreen,
+        builder: (context, state) => WordsScreen(),
+      ),
       GoRoute(
         path: kHomeView,
         builder: (context, state) => const HomeView(),
