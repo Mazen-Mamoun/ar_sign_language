@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'sign_item.dart';
 
 class SignContent extends StatelessWidget {
-  const SignContent({super.key, required this.items});
+  const SignContent({super.key, required this.items, required this.itemsCount});
   final List<Map<String, String>> items;
+  final int itemsCount;
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +13,11 @@ class SignContent extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, crossAxisSpacing: 20, mainAxisSpacing: 20),
+              crossAxisCount: itemsCount, crossAxisSpacing: 20, mainAxisSpacing: 20),
           itemCount: items.length,
           itemBuilder: (context, index) {
             return SignItem(
-                image: items[index]['image'] ?? "assets/images/logo.png",
+                mediaPath: items[index]['mediaPath'] ?? "assets/images/logo.png",
                 text: items[index]['text'] ?? "not found");
           }),
     );
