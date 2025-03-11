@@ -16,18 +16,8 @@ class LettersScreen extends StatelessWidget {
     return Scaffold(
       appBar: const ContentAppBar(text: "الحروف الأبجدية"),
       body: Padding(
-        padding: const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 8),
-        child: Column(
-          children: [
-            // SizedBox(
-            //   height: 10,
-            // ),
-            Expanded(
-                child: SignContent(
-              items: letterItems,
-            )),
-          ],
-        ),
+        padding: const EdgeInsets.only(top: 8, right: 16, left: 16, bottom: 8),
+        child: SignContent(itemsCount: 2, items: letterItems),
       ),
     );
   }
