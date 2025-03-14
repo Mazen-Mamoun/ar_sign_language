@@ -9,21 +9,24 @@ class LearningContentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: const ContentAppBar(text: "المحتوى"),
-      body: SafeArea(
-        child: Column(
-          children: [
-           const SizedBox(
-              height: 20,
-            ),
-            const ContentAppBar(text: 'المحتوى'),
-            Expanded(child: ContentSection()),
-          ],
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        // appBar: const ContentAppBar(text: "المحتوى"),
+        body: SafeArea(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 20,
+              ),
+              const ContentAppBar(text: 'المحتوى'),
+              Expanded(child: ContentSection()),
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: const MainBottomNavigationBar(
-        currentIndex: 3,
+        bottomNavigationBar: const MainBottomNavigationBar(
+          currentIndex: 3,
+        ),
       ),
     );
   }
