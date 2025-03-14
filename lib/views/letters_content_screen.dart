@@ -13,11 +13,15 @@ class LettersScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const ContentAppBar(text: "الحروف الأبجدية"),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 8, right: 16, left: 16, bottom: 8),
-        child: SignContent(itemsCount: 2, items: letterItems),
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: const ContentAppBar(text: "الحروف الأبجدية"),
+        body: Padding(
+          padding:
+              const EdgeInsets.only(top: 8, right: 16, left: 16, bottom: 8),
+          child: SignContent(itemsCount: 2, items: letterItems),
+        ),
       ),
     );
   }
