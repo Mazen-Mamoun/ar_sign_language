@@ -29,9 +29,13 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kloginView,
-        builder: (context, state) =>const LogInView(),
+        builder: (context, state) => const LogInView(),
       ),
-     GoRoute(
+      GoRoute(
+        path: kSignUpView,
+        builder: (context, state) => const SignUpView(),
+      ),
+      GoRoute(
         path: kWordsScreen,
         builder: (context, state) => WordsScreen(),
       ),
@@ -51,6 +55,11 @@ abstract class AppRouter {
         path: kNumberScreen,
         builder: (context, state) => NumbersScreen(),
       ),
+      GoRoute(
+        path: kProfileView,
+        builder: (context, state) => const ProfileView(),
+      ),
     ],
   );
 }
+
