@@ -16,12 +16,32 @@ abstract class AppRouter {
   static const kNumberScreen = '/numbersScreen';
   static const kWordsScreen = '/wordsScreen';
   static const kTestScreen = '/testScreen';
+  static const kExamScreen = '/examScreen';
+  static const kLettersExamScreen = '/lettersExamScreen';
+  static const kNumbersExamScreen = '/numbersExamScreen';
+  static const kWordsExamScreen = '/wordsExamScreen';
 
   static final router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) => const SplashView(),
+      ),
+      GoRoute(
+        path: kExamScreen,
+        builder: (context, state) => const ExamScreen(),
+      ),
+      GoRoute(
+        path: kLettersExamScreen,
+        builder: (context, state) => LettersExamScreen(),
+      ),
+      GoRoute(
+        path: kWordsExamScreen,
+        builder: (context, state) => WordsExamScreen(),
+      ),
+      GoRoute(
+        path: kNumbersExamScreen,
+        builder: (context, state) => NumbersExamScreen(),
       ),
       GoRoute(
         path: kLearningContentScreen,
