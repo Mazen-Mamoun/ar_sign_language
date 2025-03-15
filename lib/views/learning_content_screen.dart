@@ -20,7 +20,7 @@ class LearningContentScreen extends StatelessWidget {
                 height: 20,
               ),
               const ContentAppBar(text: 'المحتوى'),
-              Expanded(child: ContentSection()),
+              Expanded(child: ContentSection(id: "المحتوى",)),
             ],
           ),
         ),
