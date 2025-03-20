@@ -10,36 +10,42 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Directionality(
-      textDirection: TextDirection.rtl,
-      child: SafeArea(
-        child: Scaffold(
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+    return SafeArea(
+      child: Scaffold(
+        body: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  ProfileNameContainer(),
-                  SizedBox(height: 20),
-                  EditProfileCard(),
-                  SizedBox(height: 10),
-                  ProgressCard(),
-                  CustomerSupportCard(),
+                  const ProfileNameContainer(),
+                  const SizedBox(height: 20),
+                  const EditProfileCard(),
+                  const SizedBox(height: 10),
+                  const ProgressCard(),
+                  const CustomerSupportCard(),
                   Card(
                     elevation: 2,
                     color: Colors.white,
                     child: Padding(
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.logout),
-                              SizedBox(width: 10),
+                              Icon(
+                                Icons.logout,
+                                color: Colors.red[800],
+                              ),
+                              const SizedBox(width: 10),
                               Text(
                                 'تسجيل الخروج',
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red[800],
+                                ),
                               ),
                             ],
                           ),
@@ -51,8 +57,8 @@ class ProfileView extends StatelessWidget {
               ),
             ),
           ),
-          bottomNavigationBar: MainBottomNavigationBar(currentIndex: 4),
         ),
+        bottomNavigationBar: MainBottomNavigationBar(currentIndex: 4),
       ),
     );
   }
