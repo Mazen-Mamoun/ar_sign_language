@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:sign_app/Widgets/profile_icon.dart';
+import 'package:tawasel/widgets/profile_icon.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({super.key, required this.userName});
-
-  final String userName;
+  const HomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          '"$userName" مرحباً',
-          style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'مرحبا بك،',
+              style: TextStyle(
+                color: Colors.grey[700],
+                fontSize: 30,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const ProfileIcon(),
+          ],
         ),
-        const SizedBox(width: 12),
-        const ProfileIcon(),
+        const Text(
+          'Ziad Alaa',
+          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
