@@ -16,10 +16,13 @@ abstract class AppRouter {
   static const kNumberScreen = '/numbersScreen';
   static const kWordsScreen = '/wordsScreen';
   static const kTestScreen = '/testScreen';
+  static const kSignUpView = '/SignUpView';
+  static const kProfileView = '/profileView';
   static const kExamScreen = '/examScreen';
   static const kLettersExamScreen = '/lettersExamScreen';
   static const kNumbersExamScreen = '/numbersExamScreen';
   static const kWordsExamScreen = '/wordsExamScreen';
+  static const kPasswordRecoveryView = '/passwordRecoveryView';
 
   static final router = GoRouter(
     routes: [
@@ -68,6 +71,10 @@ abstract class AppRouter {
         builder: (context, state) => const TestScreen(),
       ),
       GoRoute(
+        path: kPasswordRecoveryView,
+        builder: (context, state) => const password_recovery_view(),
+      ),
+      GoRoute(
         path: kLettersScreen,
         builder: (context, state) => LettersScreen(),
       ),
@@ -82,4 +89,3 @@ abstract class AppRouter {
     ],
   );
 }
-
