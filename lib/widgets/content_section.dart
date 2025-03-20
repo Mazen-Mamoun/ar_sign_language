@@ -30,8 +30,10 @@ class ContentSection extends StatelessWidget {
               switch (id) {
                 case 'المحتوى':
                   GoRouter.of(context).push(categoriesLearn[index]["page"]);
+                 break;
                 case 'الإختبار':
                   GoRouter.of(context).push(categoriesExam[index]["page"]);
+                  break;
               }
             },
           );
