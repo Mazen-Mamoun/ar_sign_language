@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tawasel/constants.dart';
 import 'package:tawasel/helper/app_router.dart';
 import 'package:tawasel/helper/app_utils.dart';
+import 'package:tawasel/helper/constants.dart';
+import 'package:tawasel/widgets/custom_auth_button.dart';
 import 'package:tawasel/widgets/custom_text_form_field.dart';
-import 'package:tawasel/widgets/sign_up_navigation_text.dart';
+import 'package:tawasel/widgets/auth_navigation_text.dart';
 
 class LogInBody extends StatefulWidget {
   const LogInBody({super.key});
@@ -15,6 +16,8 @@ class LogInBody extends StatefulWidget {
 
 class _LogInBodyState extends State<LogInBody> {
   final GlobalKey<FormState> form = GlobalKey();
+
+  bool isPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +51,27 @@ class _LogInBodyState extends State<LogInBody> {
             ),
             const SizedBox(height: 20),
             const CustomTextFormField(
+              obscureText: false,
               title: 'البريد الالكتروني',
-              preficIcon: Icons.email_outlined,
+              prefixIcon: Icons.email_outlined,
               validatorText: 'ادخل البريد الالكتروني الخاص بك',
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            const CustomTextFormField(
+            const SizedBox(height: 10),
+            CustomTextFormField(
+              obscureText: !isPasswordVisible,
               title: 'كلمة المرور',
-              preficIcon: Icons.lock_outlined,
-              suffixIcon: Icons.visibility,
+              prefixIcon: Icons.lock_outlined,
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    isPasswordVisible = !isPasswordVisible;
+                  });
+                },
+                icon: isPasswordVisible
+                    ? const Icon(Icons.visibility)
+                    : const Icon(Icons.visibility_off),
+                color: Colors.grey.shade500,
+              ),
               validatorText: 'ادخل كلمة المرور الخاصة بك',
             ),
             const SizedBox(height: 10),
@@ -66,7 +79,9 @@ class _LogInBodyState extends State<LogInBody> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kPasswordRecoveryView);
+                  },
                   child: Text(
                     "هل نسيت كلمة المرور؟",
                     style: TextStyle(color: kPrimaryColor),
@@ -75,31 +90,25 @@ class _LogInBodyState extends State<LogInBody> {
               ],
             ),
             const SizedBox(height: 15),
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kPrimaryColor,
-                ),
-                onPressed: () {
-                  if (form.currentState!.validate()) {
-                    snackBar(context, 'تم تسجيل الدخول بنجاح');
-                  }
+            CusotmAuthButton(
+              form: form,
+              title: 'تسجيل الدخول',
+              onPressed: () {
+                if (form.currentState!.validate()) {
+                  snackBar(context, 'تم تسجيل الدخول بنجاح');
+                  FocusScope.of(context).unfocus();
                   GoRouter.of(context).push(AppRouter.kHomeView);
-                },
-                child: const Text(
-                  "تسجيل الدخول",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+                }
+              },
             ),
-            const SizedBox(height: 5),
-            const SignUpNavigationText(),
+            const SizedBox(height: 10),
+            AuthNavigationText(
+              text: 'ليس لديك حساب؟',
+              textButton: 'انشاء حساب',
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.kSignUpView);
+              },
+            )
           ],
         ),
       ),
