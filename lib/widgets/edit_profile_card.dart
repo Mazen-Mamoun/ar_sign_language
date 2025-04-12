@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tawasel/Models/auth_models/auth_api_success_response_model.dart';
+import 'package:tawasel/widgets/auth_widgets/log_in_body.dart';
 import 'package:tawasel/widgets/edit_card_button.dart';
 import 'package:tawasel/widgets/edit_card_text_field.dart';
 
@@ -7,15 +9,15 @@ class EditProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
+    return Card(
       shadowColor: Colors.grey,
       elevation: 3,
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
                 Icon(Icons.edit_note),
                 SizedBox(width: 10),
@@ -25,18 +27,18 @@ class EditProfileCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             EditCardTextField(
               title: 'اسم المستخدم:',
-              textFieldData: 'Ziadalaa955@gmail.com',
+              textFieldData: userData!.user.email,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             EditCardTextField(
-              title: 'كلمة المرور:',
-              textFieldData: '123465789',
+              title: 'اسم المستخدم:',
+              textFieldData: userData!.user.name,
             ),
-            SizedBox(height: 15),
-            EditCardButton(),
+            const SizedBox(height: 15),
+            const EditCardButton(),
           ],
         ),
       ),
