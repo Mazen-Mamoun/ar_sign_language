@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tawasel/Models/auth_models/auth_api_success_response_model.dart';
+import 'package:tawasel/Models/auth_models/user_model.dart';
+import 'package:tawasel/widgets/auth_widgets/log_in_body.dart';
 import 'package:tawasel/widgets/profile_icon.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -23,9 +26,9 @@ class HomeAppBar extends StatelessWidget {
             const ProfileIcon(),
           ],
         ),
-        const Text(
-          'Ziad Alaa',
-          style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+        Text(
+          userData!.user.name,
+          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ],
     );
