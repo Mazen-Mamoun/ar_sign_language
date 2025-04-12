@@ -18,8 +18,8 @@ class HomeCardItem extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.22,
-        width: MediaQuery.of(context).size.width * 0.42,
+        height: MediaQuery.of(context).size.height * 0.2,
+        width: MediaQuery.of(context).size.width * 0.4,
         child: Card(
           elevation: 20,
           shadowColor: const Color(0xff374E7A),
@@ -30,7 +30,8 @@ class HomeCardItem extends StatelessWidget {
               Icon(icon, size: 60, color: Colors.white),
               const Spacer(),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.02),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
