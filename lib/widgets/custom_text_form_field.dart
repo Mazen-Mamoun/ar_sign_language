@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.validatorText,
     this.suffixIconOnPressed,
     required this.obscureText,
+    this.onChanged,
   });
 
   final String title, validatorText;
@@ -17,10 +18,12 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final void Function()? suffixIconOnPressed;
   final bool obscureText;
+  final Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       obscureText: obscureText,
       validator: (value) {
         if (value!.isEmpty) {
