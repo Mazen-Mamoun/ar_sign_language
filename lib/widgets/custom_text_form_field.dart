@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIconOnPressed,
     required this.obscureText,
     this.onChanged,
+    this.filledCollor,
   });
 
   final String title, validatorText;
@@ -19,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
   final void Function()? suffixIconOnPressed;
   final bool obscureText;
   final Function(String)? onChanged;
+  final bool? filledCollor;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class CustomTextFormField extends StatelessWidget {
         prefixIcon: Icon(prefixIcon, color: Colors.grey.shade500),
         suffixIcon: suffixIcon,
         fillColor: Colors.grey.shade100,
-        filled: true,
+        filled: filledCollor,
         focusedBorder: customOutlineInputBorder(),
         enabledBorder: customOutlineInputBorder(),
         border: customOutlineInputBorder(),
