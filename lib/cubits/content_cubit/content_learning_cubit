@@ -1,0 +1,19 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tawasel/cubits/content_cubit/content_learning_state.dart';
+import 'package:tawasel/services/content_services/content_learning_services.dart';
+
+class ContentCubit extends Cubit<ContentState> {
+  ContentCubit() : super(ContentInitial());
+
+  Future<void> getContnet({required String categoryName}) async {
+    emit(ContentLoading());
+    try {
+      final items = await ContentLearningServices().getContnetByCategory(
+        categoryName: categoryName,
+      );
+      emit(ContentSuccess(items));
+    } catch (e) {
+      emit(ContentError(e.toString()));
+    }
+  }
+}
