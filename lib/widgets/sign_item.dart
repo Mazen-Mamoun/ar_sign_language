@@ -1,32 +1,46 @@
+
 import 'package:flutter/material.dart';
-import 'package:mafhom_app/widgets/sign_video_item.dart';
+import 'package:tawasel/helper/constants.dart';
+import 'package:tawasel/models/content_model/item_model.dart';
+import 'package:tawasel/widgets/sign_video_item.dart';
+
 
 class SignItem extends StatelessWidget {
-  const SignItem({super.key, required this.mediaPath, required this.text});
-  final String mediaPath;
-  final String text;
+  const SignItem({super.key, required this.itemModel});
+  final ItemModel itemModel;
   @override
   Widget build(BuildContext context) {
-    bool isVideo = mediaPath.endsWith('.mp4');
+    bool isVideo = itemModel.mediaPath.endsWith('.mp4');
     return Card(
       margin: EdgeInsets.zero,
-      color: Colors.grey[300],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      elevation: 3,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+      elevation: 0,
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: kPrimaryColor,
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             isVideo
-                // ? Text("data")
-                ? SignVideoItem(videoPath: mediaPath)
-                : Image.asset(mediaPath, height: 85),
-            const SizedBox(height: 15),
+                ? SignVideoItem(videoPath: itemModel.mediaPath)
+                : AspectRatio(
+                  aspectRatio: 1.5,
+                  child: Image.network(
+                    itemModel.mediaPath,
+                    fit: BoxFit.contain,
+                  ),
+                ),
+            const SizedBox(height: 10),
             Text(
-              text,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+              itemModel.text,
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           ],
         ),
