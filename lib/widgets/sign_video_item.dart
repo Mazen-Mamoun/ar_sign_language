@@ -10,16 +10,20 @@ class SignVideoItem extends StatefulWidget {
   _SignVideoItemState createState() => _SignVideoItemState();
 }
 
-class _SignVideoItemState extends State<SignVideoItem> {
+class _SignVideoItemState extends State<SignVideoItem>
+    with AutomaticKeepAliveClientMixin {
   late VideoPlayerController _controller;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
-    _controller = VideoPlayerController.asset(widget.videoPath)
+    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoPath))
       ..initialize().then((_) {
         setState(() {});
-        _controller.setLooping(true);
+        _controller.setLooping(false);
       });
   }
 
@@ -41,27 +45,26 @@ class _SignVideoItemState extends State<SignVideoItem> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return GestureDetector(
       onTap: _toPlayPause,
-      child:
-          _controller.value.isInitialized
-              ? Stack(
-                alignment: Alignment.center,
-                children: [
-                  AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: VideoPlayer(_controller),
+      child: _controller.value.isInitialized
+          ? Stack(
+              alignment: Alignment.center,
+              children: [
+                AspectRatio(
+                  aspectRatio: 1.2,
+                  child: VideoPlayer(_controller),
+                ),
+                if (!_controller.value.isPlaying)
+                  const Icon(
+                    Icons.play_circle_fill,
+                    size: 50,
+                    color: Colors.white,
                   ),
-                  if (!_controller.value.isPlaying)
-                    const Icon(
-                      Icons.play_circle_fill,
-                      size: 50,
-                      color: Colors.white,
-                    ),
-                ],
-              )
-              : const CircularProgressIndicator(),
+              ],
+            )
+          : const CircularProgressIndicator(),
     );
   }
 }
-  
