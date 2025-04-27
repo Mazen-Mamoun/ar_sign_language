@@ -1,25 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'sign_item.dart';
+import 'package:tawasel/cubits/content_cubit/content_learning_cubit.dart';
+import 'package:tawasel/cubits/content_cubit/content_learning_state.dart';
+import 'package:tawasel/widgets/content_success_state.dart';
 
 class SignContent extends StatelessWidget {
-  const SignContent({super.key, required this.items, required this.itemsCount});
-  final List<Map<String, String>> items;
+  const SignContent({
+    super.key,
+    required this.itemsCount,
+    required this.categoryName,
+  });
+
   final int itemsCount;
+  final String categoryName;
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: itemsCount, crossAxisSpacing: 20, mainAxisSpacing: 20),
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return SignItem(
-                mediaPath: items[index]['mediaPath'] ?? "assets/images/logo.png",
-                text: items[index]['text'] ?? "not found");
-          }),
+    return BlocProvider(
+      create: (context) =>
+          ContentCubit()..getContnet(categoryName: categoryName),
+      child: BlocBuilder<ContentCubit, ContentState>(
+        builder: (context, state) {
+          if (state is ContentLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is ContentSuccess) {
+            final items = state.items.reversed.toList();
+            if (items.isEmpty) {
+              return Center(
+                child: Text(
+                  "There is no data now..",
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              );
+            }
+            return ContentSuccessState(itemsCount: itemsCount, items: items);
+          } else if (state is ContentError) {
+            return Center(child: Text("خطأ: ${state.message}"));
+          } else {
+            return SizedBox();
+          }
+        },
+      ),
     );
   }
 }
