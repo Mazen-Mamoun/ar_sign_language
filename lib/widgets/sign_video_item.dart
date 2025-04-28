@@ -17,14 +17,17 @@ class _SignVideoItemState extends State<SignVideoItem>
   @override
   bool get wantKeepAlive => true;
 
+  
   @override
   void initState() {
-    super.initState();
-    _controller = VideoPlayerController.networkUrl(Uri.parse(widget.videoPath))
-      ..initialize().then((_) {
-        setState(() {});
-        _controller.setLooping(false);
+    _controller = VideoPlayerController.networkUrl(
+      Uri.parse(widget.videoPath),
+    )..initialize().then((v) {
+        setState(() {
+          _controller.pause();
+        });
       });
+    super.initState();
   }
 
   @override
@@ -46,10 +49,10 @@ class _SignVideoItemState extends State<SignVideoItem>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return GestureDetector(
-      onTap: _toPlayPause,
-      child: _controller.value.isInitialized
-          ? Stack(
+    return _controller.value.isInitialized
+        ? GestureDetector(
+            onTap: _toPlayPause,
+            child: Stack(
               alignment: Alignment.center,
               children: [
                 AspectRatio(
@@ -63,8 +66,7 @@ class _SignVideoItemState extends State<SignVideoItem>
                     color: Colors.white,
                   ),
               ],
-            )
-          : const CircularProgressIndicator(),
-    );
+            ))
+        : const CircularProgressIndicator();
   }
 }
