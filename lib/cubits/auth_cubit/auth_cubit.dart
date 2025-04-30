@@ -3,10 +3,13 @@ import 'package:meta/meta.dart';
 import 'package:tawasel/Models/auth_models/auth_api_success_response_model.dart';
 import 'package:tawasel/Services/auth_services/login_service.dart';
 import 'package:tawasel/Services/auth_services/register_service.dart';
+import 'package:tawasel/Services/auth_services/update_data_service.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
+  AuthApiSuccessResponse? cubitUserData;
+
   AuthCubit() : super(AuthInitial());
 
   Future<void> registerUser({
@@ -25,6 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold(
       (failure) => emit(AuthFailure(errorMessage: failure.errorMessage)),
       (data) {
+        cubitUserData = data;
         emit(AuthSuccess(authApiSuccessData: data));
       },
     );
@@ -42,8 +46,31 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold(
       (failure) => emit(AuthFailure(errorMessage: failure.errorMessage)),
       (data) {
+        cubitUserData = data;
         emit(AuthSuccess(authApiSuccessData: data));
       },
     );
   }
+
+  Future<void> updateUser({
+    required String email,
+    required String name,
+    required String token,
+  }) async {
+    emit(AuthLoading());
+    var result = await UpdateDataService().updateUser(
+      email: email,
+      userName: name,
+      token: token,
+    );
+    result.fold(
+      (failure) => emit(AuthFailure(errorMessage: failure.errorMessage)),
+      (data) {
+        cubitUserData = data;
+        emit(AuthSuccess(authApiSuccessData: data));
+      },
+    );
+  }
+
+  AuthApiSuccessResponse? getUserData() => cubitUserData;
 }
