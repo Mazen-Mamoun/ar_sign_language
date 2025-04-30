@@ -3,14 +3,19 @@ import 'package:tawasel/helper/app_utils.dart';
 import 'package:tawasel/helper/constants.dart';
 
 class EditCardButton extends StatelessWidget {
-  const EditCardButton({super.key});
+  const EditCardButton({
+    super.key,
+    required this.form,
+    required this.onTap,
+  });
+
+  final GlobalKey<FormState> form;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        snackBar(context, 'تم التعديل بنجاح');
-      },
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color: kPrimaryColor,
