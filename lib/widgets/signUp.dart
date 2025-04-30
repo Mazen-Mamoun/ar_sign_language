@@ -7,7 +7,6 @@ import 'package:tawasel/helper/app_router.dart';
 import 'package:tawasel/helper/app_utils.dart';
 import 'package:tawasel/widgets/auth_widgets/auth_navigation_text.dart';
 import 'package:tawasel/widgets/auth_widgets/custom_auth_button.dart';
-import 'package:tawasel/widgets/auth_widgets/log_in_body.dart';
 import 'package:tawasel/widgets/custom_text_form_field.dart';
 
 class SignUpBody extends StatefulWidget {
@@ -38,11 +37,11 @@ class _SignUpBodyState extends State<SignUpBody> {
         } else if (state is AuthSuccess) {
           isLodaing = false;
 
-          userData = state.authApiSuccessData;
-
           snackBar(context, state.authApiSuccessData.message);
 
-          GoRouter.of(context).push(AppRouter.kHomeView);
+          GoRouter.of(context).push(
+            AppRouter.kHomeView,
+          );
         }
       },
       builder: (context, state) {
@@ -58,32 +57,33 @@ class _SignUpBodyState extends State<SignUpBody> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                     Image.asset("assets/images/sign_up_image.png", height: 250),
                     CustomTextFormField(
+                      title: 'اسم المستخدم',
+                      validatorText: 'ادخل اسم المستخدم الخاص بك',
+                      obscureText: false,
+                      prefixIcon: Icons.person,
                       onChanged: (name) {
                         userName = name;
                       },
-                      obscureText: false,
-                      title: 'اسم المستخدم',
-                      prefixIcon: Icons.person,
-                      validatorText: 'ادخل اسم المستخدم الخاص بك',
                     ),
                     const SizedBox(height: 15),
                     CustomTextFormField(
+                      title: 'البريد الالكتروني',
+                      validatorText: 'ادخل البريد الالكتروني الخاص بك',
+                      obscureText: false,
+                      prefixIcon: Icons.email_outlined,
                       onChanged: (mail) {
                         email = mail;
                       },
-                      obscureText: false,
-                      title: 'البريد الالكتروني',
-                      prefixIcon: Icons.email_outlined,
-                      validatorText: 'ادخل البريد الالكتروني الخاص بك',
                     ),
                     const SizedBox(height: 15),
                     CustomTextFormField(
+                      title: 'كلمة السر',
+                      validatorText: 'ادخل كلمة السر الخاصة بك',
+                      obscureText: !isPasswordVisible,
+                      prefixIcon: Icons.lock_outlined,
                       onChanged: (pass) {
                         password = pass;
                       },
-                      obscureText: !isPasswordVisible,
-                      title: 'كلمة السر',
-                      prefixIcon: Icons.lock_outlined,
                       suffixIcon: IconButton(
                         onPressed: () {
                           isPasswordVisible = !isPasswordVisible;
@@ -94,16 +94,16 @@ class _SignUpBodyState extends State<SignUpBody> {
                             : const Icon(Icons.visibility_off),
                         color: Colors.grey.shade500,
                       ),
-                      validatorText: 'ادخل كلمة السر الخاصة بك',
                     ),
                     const SizedBox(height: 15),
                     CustomTextFormField(
+                      title: 'تاكيد كلمة السر',
+                      validatorText: 'ادخل كلمة السر الخاصة بك',
+                      obscureText: !isConfirmPasswordVisible,
+                      prefixIcon: Icons.lock_outlined,
                       onChanged: (pass) {
                         confirmPassword = pass;
                       },
-                      obscureText: !isConfirmPasswordVisible,
-                      title: 'تاكيد كلمة السر',
-                      prefixIcon: Icons.lock_outlined,
                       suffixIcon: IconButton(
                         onPressed: () {
                           isConfirmPasswordVisible = !isConfirmPasswordVisible;
@@ -114,10 +114,10 @@ class _SignUpBodyState extends State<SignUpBody> {
                             : const Icon(Icons.visibility_off),
                         color: Colors.grey.shade500,
                       ),
-                      validatorText: 'ادخل كلمة السر الخاصة بك',
                     ),
                     const SizedBox(height: 20),
                     CusotmAuthButton(
+                      title: 'انشاء حساب',
                       form: form,
                       onPressed: () async {
                         if (form.currentState!.validate()) {
@@ -130,7 +130,6 @@ class _SignUpBodyState extends State<SignUpBody> {
                           FocusScope.of(context).unfocus();
                         }
                       },
-                      title: 'انشاء حساب',
                     ),
                     const SizedBox(height: 10),
                     AuthNavigationText(
