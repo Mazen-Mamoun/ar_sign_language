@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:tawasel/Models/auth_models/auth_api_success_response_model.dart';
 import 'package:tawasel/helper/constants.dart';
-import 'package:tawasel/widgets/auth_widgets/log_in_body.dart';
 
 class ProfileNameContainer extends StatelessWidget {
-  const ProfileNameContainer({super.key});
+  const ProfileNameContainer({super.key, required this.userData});
+
+  final AuthApiSuccessResponse userData;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class ProfileNameContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            userData!.user.name,
+            userData.user.name,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 27,
@@ -29,7 +31,7 @@ class ProfileNameContainer extends StatelessWidget {
             ),
           ),
           Text(
-            userData!.user.email,
+            userData.user.email,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 15,
