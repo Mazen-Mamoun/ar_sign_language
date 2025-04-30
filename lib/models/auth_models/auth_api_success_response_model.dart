@@ -1,3 +1,5 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tawasel/Cubits/auth_cubit/auth_cubit.dart';
 import 'package:tawasel/Models/auth_models/user_model.dart';
 
 class AuthApiSuccessResponse {
@@ -15,8 +17,10 @@ class AuthApiSuccessResponse {
 
   factory AuthApiSuccessResponse.fromJson(Map<String, dynamic> jsonData) {
     return AuthApiSuccessResponse(
-      user: UserModel.fromJson(jsonData['data']['user']),
-      token: jsonData['data']['token'],
+      user: jsonData['data']['user'] != null
+          ? UserModel.fromJson(jsonData['data']['user'])
+          : UserModel.fromJson(jsonData['data']),
+      token: jsonData['data']['token'] ?? '',
       message: jsonData['msg'],
       statusCode: jsonData['status'],
     );
