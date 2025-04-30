@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sign_app/Widgets/home_app_bar.dart';
-import 'package:sign_app/Widgets/home_body.dart';
+import 'package:tawasel/widgets/home_app_bar.dart';
+import 'package:tawasel/widgets/home_body.dart';
+import 'package:tawasel/widgets/main_bottom_navigation_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
