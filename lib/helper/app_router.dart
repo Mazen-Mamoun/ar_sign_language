@@ -34,6 +34,7 @@ abstract class AppRouter {
   static const kWordsExamScreen = '/wordsExamScreen';
   static const kPasswordRecoveryView = '/passwordRecoveryView';
   static const kVerificationCodeView = '/verificationCodeView';
+  static const kVideoTranselateView = '/videoTranselateView';
 
   static final router = GoRouter(
     routes: [
@@ -59,7 +60,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kLearningContentScreen,
-        builder: (context, state) => LearningContentScreen(),
+        builder: (context, state) => const LearningContentScreen(),
       ),
       GoRoute(
         path: kloginView,
@@ -71,13 +72,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kWordsScreen,
-        builder: (context, state) => WordsContentScreen(),
+        builder: (context, state) => const WordsContentScreen(),
       ),
       GoRoute(
         path: kHomeView,
-        builder: (context, state) => HomeView(
-            // userData: state.extra as AuthApiSuccessResponse,
-            ),
+        builder: (context, state) => const HomeView(),
       ),
       GoRoute(
         path: kTestScreen,
@@ -89,19 +88,23 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kLettersScreen,
-        builder: (context, state) => LettersScreen(),
+        builder: (context, state) => const LettersScreen(),
       ),
       GoRoute(
         path: kNumberScreen,
-        builder: (context, state) => NumbersScreen(),
+        builder: (context, state) => const NumbersScreen(),
       ),
       GoRoute(
         path: kProfileView,
-        builder: (context, state) => ProfileView(),
+        builder: (context, state) => const ProfileView(),
       ),
       GoRoute(
         path: kVerificationCodeView,
         builder: (context, state) => const VerificationCodeView(),
+      ),
+      GoRoute(
+        path: kVideoTranselateView,
+        builder: (context, state) => const VideoTranselateView(),
       ),
     ],
   );
