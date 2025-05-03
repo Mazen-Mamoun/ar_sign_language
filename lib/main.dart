@@ -4,9 +4,13 @@ import 'package:tawasel/Cubits/auth_cubit/auth_cubit.dart';
 import 'package:tawasel/helper/app_router.dart';
 import 'package:tawasel/helper/app_theme_data.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(ItemModelAdapter());
+  await Hive.openBox(kItemBox); 
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
