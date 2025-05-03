@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tawasel/helper/app_router.dart';
-import 'package:tawasel/widgets/home_card_item.dart';
+import 'package:tawasel/widgets/home_widgets/home_card_item.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -13,7 +13,7 @@ class HomeBody extends StatelessWidget {
           title: 'ترجمة فيديو',
           icon: Icons.videocam,
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kTestScreen);
+            GoRouter.of(context).push(AppRouter.kVideoTranselateView);
           }),
       HomeCardItem(
           title: 'ترجمة نص',
