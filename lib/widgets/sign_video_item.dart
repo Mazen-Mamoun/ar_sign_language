@@ -25,6 +25,7 @@ class _SignVideoItemState extends State<SignVideoItem>
     )..initialize().then((v) {
         setState(() {
           _controller.pause();
+           _controller.setVolume(0.0); 
         });
       });
     super.initState();
