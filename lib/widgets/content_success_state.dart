@@ -10,7 +10,7 @@ class ContentSuccessState extends StatelessWidget {
     required this.items,
   });
 
-  final int itemsCount;
+  final int crossAxisCount;
   final List<ItemModel> items;
 
   @override
