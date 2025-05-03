@@ -6,7 +6,7 @@ import 'package:tawasel/widgets/sign_item.dart';
 class ContentSuccessState extends StatelessWidget {
   const ContentSuccessState({
     super.key,
-    required this.itemsCount,
+    required this.crossAxisCount,
     required this.items,
   });
 
@@ -20,7 +20,7 @@ class ContentSuccessState extends StatelessWidget {
       child: GridView.builder(
         physics: BouncingScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: itemsCount,
+          crossAxisCount: crossAxisCount,
           childAspectRatio: 0.75,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
