@@ -8,11 +8,11 @@ import 'package:tawasel/widgets/content_success_state.dart';
 class SignContent extends StatelessWidget {
   const SignContent({
     super.key,
-    required this.itemsCount,
+    required this.crossAxisCount,
     required this.categoryName,
   });
 
-  final int itemsCount;
+  final int crossAxisCount;
   final String categoryName;
 
   @override
@@ -34,7 +34,7 @@ class SignContent extends StatelessWidget {
                 ),
               );
             }
-            return ContentSuccessState(itemsCount: itemsCount, items: items);
+            return ContentSuccessState(crossAxisCount: crossAxisCount, items: items);
           } else if (state is ContentError) {
             return Center(child: Text("خطأ: ${state.message}"));
           } else {
