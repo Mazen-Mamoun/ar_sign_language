@@ -15,7 +15,7 @@ class LettersScreen extends StatelessWidget {
         body: Padding(
           padding:
                EdgeInsets.only(top: 8, right: 16, left: 16, bottom: 8),
-          child: SignContent(itemsCount: 2, categoryName: 'letter',),
+          child: SignContent(crossAxisCount: 2, categoryName: 'letter',),
         ),
       ),
     );
