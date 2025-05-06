@@ -29,6 +29,8 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) => emit(AuthFailure(errorMessage: failure.errorMessage)),
       (data) {
         cubitUserData = data;
+                        _storeToken(data.token);
+
         emit(AuthSuccess(authApiSuccessData: data));
       },
     );
@@ -47,6 +49,8 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) => emit(AuthFailure(errorMessage: failure.errorMessage)),
       (data) {
         cubitUserData = data;
+                        _storeToken(data.token);
+
         emit(AuthSuccess(authApiSuccessData: data));
       },
     );
@@ -67,10 +71,22 @@ class AuthCubit extends Cubit<AuthState> {
       (failure) => emit(AuthFailure(errorMessage: failure.errorMessage)),
       (data) {
         cubitUserData = data;
+                        _storeToken(data.token);
+
         emit(AuthSuccess(authApiSuccessData: data));
       },
     );
   }
 
   AuthApiSuccessResponse? getUserData() => cubitUserData;
+
+  Future<void> _storeToken(String token) async {
+    var box = await Hive.openBox(kAuthBox); 
+    await box.put('token', token); 
+  }
+
+  Future<String> getToken() async {
+    var box = await Hive.openBox(kAuthBox);
+    return box.get('token');
+  }
 }
