@@ -5,7 +5,7 @@ class ContentLearningServices {
   Future<List<ItemModel>> getContnetByCategory({
     required String categoryName,
   }) async {
-    String token = "78|yEhATJrUXevjycPqMoICmuM5GxLufAQRKWZ2rZPU76e228c8";
+    String token = await AuthCubit().getToken();
     Map<String, dynamic> response = await Api().get(
       headers: {'Authorization': 'Bearer $token', 'Accept': 'application/json'},
       url:
