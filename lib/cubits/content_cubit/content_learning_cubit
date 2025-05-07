@@ -57,7 +57,7 @@ class ContentCubit extends Cubit<ContentState> {
 
       emit(ContentSuccess(items));
     } catch (e) {
-      if (!isCachedDataValid) {
+      if (!isCachedDataValid && !isClosed ) {
         emit(ContentError("فشل في تحميل البيانات ولا توجد بيانات محفوظة."));
       }
     }
