@@ -8,7 +8,7 @@ import 'package:tawasel/helper/app_utils.dart';
 import 'package:tawasel/widgets/auth_widgets/custom_auth_button.dart';
 import 'package:tawasel/widgets/auth_widgets/forget_password_text_button.dart';
 import 'package:tawasel/widgets/auth_widgets/log_in_welcome_section.dart';
-import 'package:tawasel/widgets/custom_text_form_field.dart';
+import 'package:tawasel/widgets/auth_widgets/custom_text_form_field.dart';
 import 'package:tawasel/widgets/auth_widgets/auth_navigation_text.dart';
 
 class LogInBody extends StatefulWidget {
