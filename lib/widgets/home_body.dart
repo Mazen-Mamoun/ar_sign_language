@@ -10,24 +10,21 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<HomeCardItem> homeCardItems = [
       HomeCardItem(
+          width: MediaQuery.of(context).size.width * 0.9,
           title: 'ترجمة فيديو',
           icon: Icons.videocam,
           onTap: () {
             GoRouter.of(context).push(AppRouter.kVideoTranselateView);
           }),
       HomeCardItem(
-          title: 'ترجمة نص',
-          icon: Icons.notes,
-          onTap: () {
-            GoRouter.of(context).push(AppRouter.kTestScreen);
-          }),
-      HomeCardItem(
+          width: MediaQuery.of(context).size.width * 0.4,
           title: 'المحتوي التعليمي',
           icon: Icons.description,
           onTap: () {
             GoRouter.of(context).push(AppRouter.kLearningContentScreen);
           }),
       HomeCardItem(
+          width: MediaQuery.of(context).size.width * 0.4,
           title: 'اختبارات',
           icon: Icons.check_box,
           onTap: () {
@@ -51,7 +48,6 @@ class HomeBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             homeCardItems[0],
-            homeCardItems[1],
           ],
         ),
         const SizedBox(height: 10),
@@ -66,8 +62,8 @@ class HomeBody extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            homeCardItems[1],
             homeCardItems[2],
-            homeCardItems[3],
           ],
         ),
       ],
