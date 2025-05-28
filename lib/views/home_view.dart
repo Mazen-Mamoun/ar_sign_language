@@ -17,14 +17,16 @@ class HomeView extends StatelessWidget {
             child: Column(
               children: [
                 HomeAppBar(),
-                SizedBox(height: 10),
+                 Divider(indent: 10, endIndent: 10),
+                 Spacer(),
                 HomeBody(),
+                 Spacer(),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: MainBottomNavigationBar(currentIndex: 2),
+      bottomNavigationBar: MainBottomNavigationBar(currentIndex: 1),
     );
   }
 }
