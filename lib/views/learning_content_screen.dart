@@ -25,7 +25,7 @@ class LearningContentScreen extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: const MainBottomNavigationBar(
-          currentIndex: 3,
+          currentIndex: 0,
         ),
       ),
     );
