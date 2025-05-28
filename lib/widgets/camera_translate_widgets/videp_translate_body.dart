@@ -8,8 +8,9 @@ import 'package:tawasel/widgets/camera_translate_widgets/translating_container.d
 import 'package:tawasel/widgets/main_bottom_navigation_bar.dart';
 
 class VideoTranselateBody extends StatefulWidget {
-  const VideoTranselateBody({super.key});
-
+final Future<void> Function(Uint8List bytes) onFrameCaptured;
+  final String title;
+  const VideoTranselateBody({super.key, required this.onFrameCaptured, required this.title});
   @override
   State<VideoTranselateBody> createState() => _VideoTranselateBodyState();
 }
@@ -23,7 +24,7 @@ class _VideoTranselateBodyState extends State<VideoTranselateBody> {
           children: [
             Spacer(),
             Text(
-              'ترجمة فيديو',
+               widget.title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
@@ -47,10 +48,12 @@ class _VideoTranselateBodyState extends State<VideoTranselateBody> {
                   }
                 },
               ),
-              const ToggleCameraButton(),
+             ToggleCameraButton(
+                onFrameCaptured: widget.onFrameCaptured,
+              ),
             ],
           ),
-          const TranslatingContainer(),
+           TranslatingContainer(),
           const SizedBox(height: 10),
         ],
       ),
