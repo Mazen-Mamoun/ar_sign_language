@@ -25,9 +25,10 @@ class _ProfileViewState extends State<ProfileView> {
 
     bool isLoading = false;
 
-    return SafeArea(
-      child: Scaffold(
-        body: BlocConsumer<AuthCubit, AuthState>(
+   
+    return Scaffold(
+      body: SafeArea(
+        child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is AuthLoading) {
               isLoading = true;
@@ -103,8 +104,8 @@ class _ProfileViewState extends State<ProfileView> {
             );
           },
         ),
-        bottomNavigationBar: const MainBottomNavigationBar(currentIndex: 4),
       ),
+      bottomNavigationBar: const MainBottomNavigationBar(currentIndex: 2),
     );
   }
 }
