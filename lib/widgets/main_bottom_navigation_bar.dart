@@ -22,46 +22,31 @@ class MainBottomNavigationBar extends StatelessWidget {
       onTap: (index) {
         switch (index) {
           case 0:
-            context.push(AppRouter.kVideoTranselateView);
-            break;
-          // case 1:
-          //   context.go(AppRouter.kAlphaScreen);
-          //   break;
-          case 2:
-            GoRouter.of(context).push(AppRouter.kHomeView);
-            // context.go(AppRouter.kHomeView);
-            break;
-          case 3:
             GoRouter.of(context).push(AppRouter.kLearningContentScreen);
-            // context.go(AppRouter.kLearningContentScreen);
             break;
-          case 4:
+         
+          case 1:
+            GoRouter.of(context).push(AppRouter.kHomeView);
+            break;
+          case 2:
             GoRouter.of(context).push(AppRouter.kProfileView);
-            // context.go(AppRouter.kProfileView);
             break;
         }
       },
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.videocam, size: 32),
-          label: "",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.text_fields, size: 32),
-          label: "",
+          icon: Icon(Icons.description, size: 32),
+          label: "المحتوى التعليمي",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.home, size: 32),
-          label: "",
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.description, size: 32),
-          label: "",
+          label: "الصفحة الرئيسية",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person, size: 32),
-          label: "",
+          label: "الملف الشخصي",
         ),
+        
       ],
     );
   }
