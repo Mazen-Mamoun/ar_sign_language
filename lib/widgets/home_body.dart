@@ -10,21 +10,33 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<HomeCardItem> homeCardItems = [
       HomeCardItem(
-          width: MediaQuery.of(context).size.width * 0.9,
-          title: 'ترجمة فيديو',
-          icon: Icons.videocam,
+          title: 'كلمة',
+          icon: Icons.wordpress,
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kVideoTranselateView);
+            GoRouter.of(context)
+                .push('${AppRouter.kVideoTranselateView}?mode=word');
           }),
       HomeCardItem(
-          width: MediaQuery.of(context).size.width * 0.4,
+          title: 'حرف',
+          icon: Icons.abc_rounded,
+          onTap: () {
+            GoRouter.of(context)
+                .push('${AppRouter.kVideoTranselateView}?mode=letter');
+          }),
+      HomeCardItem(
+          title: 'رقم',
+          icon: Icons.pin_outlined,
+          onTap: () {
+            GoRouter.of(context)
+                .push('${AppRouter.kVideoTranselateView}?mode=number');
+          }),
+      HomeCardItem(
           title: 'المحتوي التعليمي',
           icon: Icons.description,
           onTap: () {
             GoRouter.of(context).push(AppRouter.kLearningContentScreen);
           }),
       HomeCardItem(
-          width: MediaQuery.of(context).size.width * 0.4,
           title: 'اختبارات',
           icon: Icons.check_box,
           onTap: () {
@@ -35,7 +47,6 @@ class HomeBody extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Divider(indent: 10, endIndent: 10),
         Text(
           'ترجمه',
           style: TextStyle(
@@ -44,10 +55,15 @@ class HomeBody extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        const SizedBox(
+          height: 5,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            homeCardItems[0],
+Expanded(child: homeCardItems[0]),
+            Expanded(child: homeCardItems[1]),
+            Expanded(child: homeCardItems[2]),       
           ],
         ),
         const SizedBox(height: 10),
@@ -59,11 +75,14 @@ class HomeBody extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        const SizedBox(
+          height: 5,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            homeCardItems[1],
-            homeCardItems[2],
+           Expanded(child: homeCardItems[3]),
+          Expanded(child: homeCardItems[4]),
           ],
         ),
       ],
