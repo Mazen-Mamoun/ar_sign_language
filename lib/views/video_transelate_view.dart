@@ -1,47 +1,54 @@
+import 'dart:developer';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tawasel/Cubits/video_translate_cubit/video_translate_cubit.dart';
-import 'package:tawasel/views/videp_translate_body.dart';
+import 'package:tawasel/cubits/api_translate_cubit/api_translate_cubit.dart';
+import 'package:tawasel/widgets/camera_translate_widgets/videp_translate_body.dart';
+
+
+enum TranslateMode { word, letter, number }
 
 class VideoTranselateView extends StatelessWidget {
-  const VideoTranselateView({super.key});
+  final TranslateMode mode;
+  const VideoTranselateView({super.key, required this.mode});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => VideoTranslateCubit(),
-      child: const VideoTranselateBody(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => VideoTranslateCubit()),
+        BlocProvider(create: (_) => ApiTranslateCubit()),
+      ],
+      child: Builder(builder: (context) {
+        return VideoTranselateBody(
+          title: getTitleFromMode(mode),
+          onFrameCaptured: (Uint8List bytes) async {
+            log('Frame Captured!');
+
+            final apiCubit = context.read<ApiTranslateCubit>();
+            if (mode == TranslateMode.word) {
+              await apiCubit.sendVideo([bytes]);
+            } else if (mode == TranslateMode.letter) {
+              await apiCubit.sendImage(bytes, category: "letter");
+            } else if (mode == TranslateMode.number) {
+              await apiCubit.sendImage(bytes, category: "number");
+            }
+          },
+        );
+      }),
     );
   }
-}
 
-class TranslatedLetterDisplay extends StatelessWidget {
-  final String letter;
-  const TranslatedLetterDisplay({required this.letter, super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      bottom: 32,
-      left: 0,
-      right: 0,
-      child: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.3),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Text(
-            letter.isNotEmpty ? letter : 'في انتظار الإشارة...',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-    );
+  String getTitleFromMode(TranslateMode mode) {
+    switch (mode) {
+      case TranslateMode.letter:
+        return 'ترجمة حرف';
+      case TranslateMode.number:
+        return 'ترجمة رقم';
+      case TranslateMode.word:
+      default:
+        return 'ترجمة كلمة';
+    }
   }
 }
