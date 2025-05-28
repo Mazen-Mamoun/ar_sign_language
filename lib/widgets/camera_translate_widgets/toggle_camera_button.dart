@@ -1,31 +1,36 @@
+import 'dart:typed_data';
+
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tawasel/Cubits/video_translate_cubit/video_translate_cubit.dart';
 import 'package:tawasel/helper/constants.dart';
 
 class ToggleCameraButton extends StatelessWidget {
-  const ToggleCameraButton({super.key});
+     final Future<void> Function(Uint8List bytes) onFrameCaptured;
+  const ToggleCameraButton({super.key,    required this.onFrameCaptured,
+});
 
   @override
   Widget build(BuildContext context) {
-    Future<void> initializeCamera() async {
-      final cameras = await availableCameras();
-      BlocProvider.of<VideoTranslateCubit>(context).initializeCamera(cameras);
-    }
-
-    bool isCameraOn = false;
+   
+Future<void> initializeCamera() async {
+  final cameras = await availableCameras();
+  BlocProvider.of<VideoTranslateCubit>(context).initializeCamera(
+        cameras,
+        onFrameCaptured, // دي الدالة اللي اتبعتت من بره
+      );
+}
 
     return BlocConsumer<VideoTranslateCubit, VideoTranslateState>(
       listener: (context, state) {
         if (state is VideoTranslateCameraOn) {
-          isCameraOn = true;
         } else {
-          isCameraOn = false;
         }
       },
       builder: (context, state) {
+        final isCameraOn = state is VideoTranslateCameraOn;
+
         return Positioned(
           bottom: 32,
           left: MediaQuery.of(context).size.width * 0.5 - 25,
