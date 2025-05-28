@@ -34,7 +34,7 @@ abstract class AppRouter {
   static const kWordsExamScreen = '/wordsExamScreen';
   static const kPasswordRecoveryView = '/passwordRecoveryView';
   static const kVerificationCodeView = '/verificationCodeView';
-  static const kVideoTranselateView = '/videoTranselateView';
+  static const kVideoTranselateView = '/video_translate/:mode';
 
   static final router = GoRouter(
     routes: [
@@ -104,7 +104,24 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kVideoTranselateView,
-        builder: (context, state) => const VideoTranselateView(),
+        builder: (context, state) {
+    final modeParam = state.uri.queryParameters['mode'] ?? 'word';
+
+    TranslateMode mode;
+    switch (modeParam) {
+      case 'letter':
+        mode = TranslateMode.letter;
+        break;
+      case 'number':
+        mode = TranslateMode.number;
+        break;
+      case 'word':
+      default:
+        mode = TranslateMode.word;
+    }
+
+    return VideoTranselateView(mode: mode);
+  },
       ),
     ],
   );
