@@ -7,23 +7,21 @@ class HomeCardItem extends StatelessWidget {
     required this.title,
     this.onTap,
     required this.icon,
-    required this.width,
+    
   });
 
   final String title;
   final Function()? onTap;
   final IconData icon;
-  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.2,
-        width: width,
+        height: MediaQuery.of(context).size.height * 0.19,
         child: Card(
-          elevation: 8,
+          elevation: 2,
           shadowColor: const Color(0xff374E7A),
           color: kPrimaryColor,
           child: Column(
@@ -47,7 +45,6 @@ class HomeCardItem extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.of(context).size.width * 0.02),
                 child: Container(
-                  width: 150,
                   decoration: BoxDecoration(
                     color: const Color(0xff374E7A),
                     borderRadius: BorderRadius.circular(8),
@@ -68,7 +65,7 @@ class HomeCardItem extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 12)
+              const SizedBox(height: 10)
             ],
           ),
         ),
