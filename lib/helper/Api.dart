@@ -7,10 +7,16 @@ class Api {
   Future<Map<String, dynamic>> post({
     required String url,
     required Map<String, dynamic> data,
+    required String? token,
   }) async {
     Response response = await dio.post(
       url,
       data: data,
+      options: Options(
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      ),
     );
 
     Map<String, dynamic> jsonData = response.data;
@@ -52,7 +58,7 @@ class Api {
       options: Options(headers: headers),
     );
     if (response.statusCode == 200) {
-      // print(response.data);
+    
       return response.data;
     } else {
       throw Exception(
