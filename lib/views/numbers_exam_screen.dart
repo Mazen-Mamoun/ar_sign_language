@@ -1,35 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:mafhom_app/widgets/content_app_bar.dart';
-import 'package:mafhom_app/widgets/numbers_exam_section.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tawasel/Cubits/exam_cubit/exam_cubit.dart';
+import 'package:tawasel/Cubits/submit_cubit/submit_cubit.dart';
+import 'package:tawasel/widgets/content_widgets/content_app_bar.dart';
+import 'package:tawasel/widgets/exam_widgets/numbers_exam_section.dart';
 
 class NumbersExamScreen extends StatelessWidget {
-  NumbersExamScreen({super.key});
-  final List<Map<String, String>> mcqItems = [
-    {
-      'text': "- أي من الاختيارات التالية يمثل الرقم (1):",
-      'image1': "assets/images/im.png",
-      'image2': "assets/images/hh.png",
-      'image3': "assets/images/image.png",
-    },
-    {
-      'text': "- أي من الاختيارات التالية يمثل الرقم (2):",
-      'image1': "assets/images/hh.png",
-      'image2': "assets/images/image.png",
-      'image3': "assets/images/im.png",
-    },
-  ];
-  final List<Map<String, String>> camItems = [
-    {'text': "- افتح الكاميرا وقم بتمثيل  الرقم (1):"},
-    {'text': "- افتح الكاميرا وقم بتمثيل  الرقم (2):"},
-    {'text': "- افتح الكاميرا وقم بتمثيل  الرقم (5):"},
-  ];
+  const NumbersExamScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: ContentAppBar(text: 'الأرقام'),
+    BlocProvider.of<ExamCubit>(context).getexam(categoryId: 3);
 
-      body: NumbersExamSection(mcqItems: mcqItems, camItems: camItems),
+    return Scaffold(
+      appBar: const ContentAppBar(text: 'الأرقام'),
+      body: BlocBuilder<ExamCubit, ExamState>(
+        builder: (context, state) {
+          if (state is ExamLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is ExamSuccess) {
+            return BlocListener<SubmitCubit, SubmitState>(
+              listener: (context, state) {
+                if (state is SubmitSuccess) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('النتيجة'),
+                      content: Text(
+                        'درجتك: ${state.score.toStringAsFixed(2)}',
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.of(context).popUntil(
+                            (route) => route.isFirst,
+                          ),
+                          child: const Text('حسناً'),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (state is SubmitError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.message),
+                    ),
+                  );
+                }
+              },
+              child: NumbersExamSection(mcqItems: state.questions),
+            );
+          } else if (state is ExamError) {
+            return Text(state.message);
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
     );
   }
 }
-
