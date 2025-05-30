@@ -1,16 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:mafhom_app/widgets/camera_section.dart';
-import 'package:mafhom_app/widgets/mcq_section.dart';
+import 'package:tawasel/Models/exam_models/exam_model.dart';
+import 'package:tawasel/widgets/exam_widgets/mcq_section.dart';
 
 class NumbersExamSection extends StatelessWidget {
   const NumbersExamSection({
     super.key,
     required this.mcqItems,
-    required this.camItems,
   });
 
-  final List<Map<String, String>> mcqItems;
-  final List<Map<String, String>> camItems;
+  final List<ExamModel> mcqItems;
 
   @override
   Widget build(BuildContext context) {
@@ -22,18 +20,12 @@ class NumbersExamSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'اختر الرقم الصحيح بناء على الإشارة',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               McqSection(items: mcqItems),
-              SizedBox(height: 30),
-              Text(
-                "تمثيل الرقم المطلوب:",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 30),
-              CameraSection(items: camItems),
+              const SizedBox(height: 30),
             ],
           ),
         ),
