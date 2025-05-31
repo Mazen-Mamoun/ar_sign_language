@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:either_dart/either.dart';
 import 'package:tawasel/Models/auth_models/auth_api_success_response_model.dart';
-import 'package:tawasel/Models/auth_models/user_model.dart';
 import 'package:tawasel/helper/Api.dart';
 import 'package:tawasel/helper/failure.dart';
 
@@ -19,12 +16,11 @@ class LoginService {
           'email': email,
           'password': password,
         },
+        token: '',
       );
 
       AuthApiSuccessResponse successData =
           AuthApiSuccessResponse.fromJson(jsonData);
-
-      log(jsonData.toString());
 
       return Right(successData);
     } on DioException catch (e) {
