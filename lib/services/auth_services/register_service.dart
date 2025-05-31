@@ -20,7 +20,7 @@ class RegisterService {
           'password': password,
           'password_confirmation': confirmPassword,
         },
-        token: '',
+        
       );
 
       AuthApiSuccessResponse successData =
