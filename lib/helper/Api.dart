@@ -7,7 +7,7 @@ class Api {
   Future<Map<String, dynamic>> post({
     required String url,
     required Map<String, dynamic> data,
-    required String? token,
+    String? token,
   }) async {
     Response response = await dio.post(
       url,
