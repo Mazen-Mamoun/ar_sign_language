@@ -13,7 +13,7 @@ class WordsContentScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.only(top: 0, right: 16, left: 16, bottom: 8),
         child: SignContent(
-         crossAxisCount: 1,
+         crossAxisCount: 2,
           categoryName: 'word',
         ),
       ),
