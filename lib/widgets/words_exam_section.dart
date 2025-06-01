@@ -18,7 +18,7 @@ class WordsExamSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'اختر الكلمة الصحيحة بناءً على الإشارة',
+                'اختر الإشارة الصحيحة بناءً على الكلمة',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               McqSection(items: mcqItems),
