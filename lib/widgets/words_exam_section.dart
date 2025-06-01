@@ -1,13 +1,11 @@
-import 'package:flutter/widgets.dart';
-import 'package:mafhom_app/widgets/camera_section.dart';
+import 'package:flutter/material.dart';
+import 'package:tawasel/Models/exam_models/exam_model.dart';
+import 'package:tawasel/widgets/exam_widgets/mcq_section.dart';
 
 class WordsExamSection extends StatelessWidget {
-  const WordsExamSection({
-    super.key,
-    required this.camItems,
-  });
+  const WordsExamSection({super.key, required this.mcqItems});
 
-  final List<Map<String, String>> camItems;
+  final List<ExamModel> mcqItems;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +17,12 @@ class WordsExamSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "تمثيل الحرف المطلوب:",
+              const Text(
+                'اختر الكلمة الصحيحة بناءً على الإشارة',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 30),
-              CameraSection(items: camItems),
+              McqSection(items: mcqItems),
+              const SizedBox(height: 30),
             ],
           ),
         ),
