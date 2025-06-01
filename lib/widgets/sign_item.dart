@@ -10,7 +10,7 @@ class SignItem extends StatelessWidget {
   final ItemModel itemModel;
   @override
   Widget build(BuildContext context) {
-    bool isVideo = itemModel.mediaPath.endsWith('.mp4');
+   
     return Card(
       margin: EdgeInsets.zero,
       elevation: 0,
@@ -24,12 +24,8 @@ class SignItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            isVideo
-              ? (itemModel.localImagePath != null
-                    ? SignVideoItem(videoPath: itemModel.localImagePath!)
-                    : const Text("جاري تحميل الفيديو..."))
-                : AspectRatio(
-                    aspectRatio: 1.5,
+             AspectRatio(
+                    aspectRatio: 1.2,
                     child: // عرض الصورة المحفوظة محليًا
                         itemModel.localImagePath != null
                             ? Image.file(File(itemModel.localImagePath!))
