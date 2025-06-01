@@ -28,7 +28,7 @@ class VideoTranselateView extends StatelessWidget {
 
             final apiCubit = context.read<ApiTranslateCubit>();
             if (mode == TranslateMode.word) {
-              await apiCubit.sendVideo([bytes]);
+             await apiCubit.sendImage(bytes, category: "word");
             } else if (mode == TranslateMode.letter) {
               await apiCubit.sendImage(bytes, category: "letter");
             } else if (mode == TranslateMode.number) {
